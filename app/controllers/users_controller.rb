@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   private 
 
   def allowed_params
-    params.permit(:name, username,email,password)
+    params.permit(:name, :username,:email,:password)
   end
 
 end

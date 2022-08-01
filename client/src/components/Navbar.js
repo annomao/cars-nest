@@ -38,7 +38,7 @@ function Navbar() {
               </li>
             </ul>
 
-            <div className="mt-3 space-y-2 lg:hidden md:inline-block">
+            <div className="mt-3 space-y-2 md:hidden md:inline-block">
               <NavLink to='/login'
                 className="inline-block w-full px-4 py-2 text-center text-white bg-cBlue rounded-md shadow hover:bg-gray-800">
                 Log in </NavLink>

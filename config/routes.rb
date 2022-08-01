@@ -4,9 +4,10 @@ Rails.application.routes.draw do
       resources :users, only: [:create, :show]
       resources :reviews
       resources :questions
-      resources :quecomments
-      resources :revcomments
+      resources :quecomments, only: [:create, :update, :destroy]
+      resources :revcomments, only: [:create, :update, :destroy]
       post '/auth', to: 'sessions#create'
+      delete '/auth/:id', to: 'sessions#destroy'
     end
   end
 

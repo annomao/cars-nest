@@ -13,7 +13,7 @@ function Login() {
 
   function handleSubmit(event){
     event.preventDefault()
-    fetch("",{
+    fetch("https://cars-nest.herokuapp.com/api/v1/auth",{
       method: "POST",
       headers: {
         "Content-Type" : "application/json"

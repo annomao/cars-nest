@@ -1,7 +1,5 @@
 import React from 'react'
 import { FaThumbsDown,FaThumbsUp } from 'react-icons/fa'
-import Comment from './Comment'
-import CommentForm from './CommentForm'
 
 function ReviewPost() {
   return (

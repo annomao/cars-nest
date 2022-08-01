@@ -1,13 +1,14 @@
 import React from 'react'
-import { FaUserAlt,FaUserCircle } from 'react-icons/fa'
+import { FaUserAlt,FaUserCircle,FaAt,FaLock,FaArrowRight } from 'react-icons/fa'
 import BaseForm from './BaseForm'
 
 function Signup() {
   const title = "REGISTER FOR AN ACCOUNT"
   const check = "Already have an account?"
+  const link = '/login'
   return ( 
     <>
-    <BaseForm title={title} check={check}>
+    <BaseForm title={title} check={check} link={link}>
       <form>
         <div className="flex flex-col mb-6">
           <div className="relative">
@@ -36,7 +37,7 @@ function Signup() {
         </div>
         <div className="flex w-full">
           <button type="submit" className="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-cBlue hover:bg-grey-800 py-2 w-full transition duration-150 ease-in">
-            <span className="mr-2 uppercase">Login</span>
+            <span className="mr-2 uppercase">Signup</span>
             <span><FaArrowRight/></span>
           </button>
         </div>

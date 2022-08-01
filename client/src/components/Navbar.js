@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 
 function Navbar() {
   const [navbar, setNavbar] = useState(false);
@@ -67,20 +68,20 @@ function Navbar() {
             </ul>
 
             <div className="mt-3 space-y-2 lg:hidden md:inline-block">
-              <p
+              <NavLink to='/login'
                 className="inline-block w-full px-4 py-2 text-center text-white bg-cBlue rounded-md shadow hover:bg-gray-800">
-                Log in </p>
-              <p 
+                Log in </NavLink>
+              <NavLink to='/signup'
                 className="inline-block w-full px-4 py-2 text-center text-cBlue bg-white rounded-md shadow hover:text-gray-800">
-                Sign up </p>
+                Sign up </NavLink>
             </div>
           </div>
         </div>
         <div className="hidden space-x-2 md:inline-block">
-          <span
-            className="px-4 py-2 text-white bg-cBlue rounded-md shadow hover:bg-gray-800">Log in</span>
-          <span
-            className="px-4 py-2 text-cBlue bg-white rounded-md shadow hover:text-gray-800">Sign up</span>
+          <NavLink to='/login'
+            className="px-4 py-2 text-white bg-cBlue rounded-md shadow hover:bg-gray-800">Log in</NavLink>
+          <NavLink to='/signup'
+            className="px-4 py-2 text-cBlue bg-white rounded-md shadow hover:text-gray-800">Sign up</NavLink>
         </div>
       </div>
     </nav>

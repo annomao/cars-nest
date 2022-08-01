@@ -4,10 +4,11 @@ import { FaAt,FaLock,FaArrowRight } from 'react-icons/fa'
 
 function Login() {
   const title = "LOGIN TO YOUR ACCOUNT"
-  const check = "You don't have an account?"
+  const check = "Don't have an account?"
+  const link = '/signup'
   return ( 
     <>
-    <BaseForm title={title} check={check}>
+    <BaseForm title={title} check={check} link={link}>
       <form>
         <div className="flex flex-col mb-6">
           <div className="relative">

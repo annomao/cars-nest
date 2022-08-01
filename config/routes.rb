@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
-  
+  scope :api do
+    scope :v1 do
+      resources :users, only: [:create, :show]
+      resources :reviews
+      resources :questions
+      resources :quecomments
+      resources :revcomments
+      post '/auth', to: 'sessions#create'
+    end
+  end
+
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }

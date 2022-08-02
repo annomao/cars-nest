@@ -15,7 +15,7 @@ function Login() {
 
   function handleSubmit(event){
     event.preventDefault()
-    fetch("https://cars-nest.herokuapp.com/api/v1/auth",{
+    fetch("https://cars-nest.herokuapp.com/api/v1/auth/login",{
       method: "POST",
       headers: {
         "Content-Type" : "application/json"

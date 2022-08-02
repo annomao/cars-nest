@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { FaUserAlt,FaUserCircle,FaAt,FaLock,FaArrowRight } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 import useUser from '../../hooks/useUser'
 import BaseForm from './BaseForm'
 

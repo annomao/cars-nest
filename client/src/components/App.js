@@ -5,10 +5,11 @@ import Login from './auth/Login';
 import Signup from './auth/Signup';
 import Home from './landing/Home';
 import Review from './landing/Review';
+import LoggedNav from './LoggedNav';
 import Navbar from './Navbar';
 
 function App() {
-  const {setAuth} = useUser()
+  const {auth, setAuth} = useUser()
 
   useEffect(() => {
     // auto-login
@@ -19,10 +20,11 @@ function App() {
         .then((user) => setAuth(user));
       }
     });
-  }, [])
+  }, [setAuth])
 
   return (
     <>
+      {auth ? <LoggedNav/> : <Navbar/> }
       <Navbar/>
       <Routes>
         <Route path='/' element={<Home/>}/>

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes,Route } from 'react-router-dom'
+import useUser from '../hooks/useUser';
 import Login from './auth/Login';
 import Signup from './auth/Signup';
 import Home from './landing/Home';
@@ -7,6 +8,19 @@ import Review from './landing/Review';
 import Navbar from './Navbar';
 
 function App() {
+  const {setAuth} = useUser()
+
+  useEffect(() => {
+    // auto-login
+    fetch("https://cars-nest.herokuapp.com/api/v1/me")
+    .then((r) => {
+      if (r.ok) {
+        r.json()
+        .then((user) => setAuth(user));
+      }
+    });
+  }, [])
+
   return (
     <>
       <Navbar/>

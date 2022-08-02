@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   scope :api do
     scope :v1 do
-      resources :users, only: [:create, :show]
+      resources :users, only: [:create]
       resources :reviews
       resources :questions
       resources :quecomments, only: [:create, :update, :destroy]
       resources :revcomments, only: [:create, :update, :destroy]
+      get '/me' to: 'users#show' 
       post '/auth', to: 'sessions#create'
       delete '/auth/:id', to: 'sessions#destroy'
     end

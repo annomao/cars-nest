@@ -83,7 +83,7 @@ function Login() {
         </div>
       </form>
       {errors.map((err) => (
-          <Error key={err}>{err}</Error>
+          <p  className="text-red-600 text-base" key={err}>{err}</p>
         ))}
     </BaseForm>
     </>

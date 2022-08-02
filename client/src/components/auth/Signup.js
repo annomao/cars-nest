@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { FaUserAlt,FaUserCircle,FaAt,FaLock,FaArrowRight } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
-import useUser from '../../hooks/useUser'
 import BaseForm from './BaseForm'
 
 function Signup() {
@@ -23,7 +22,7 @@ function Signup() {
       body: JSON.stringify(userSignupData)
     }
     )
-    then(res => {
+    .then(res => {
       if (res.ok){
         res.json()
         .then(()=> navigate('/login'))
@@ -89,7 +88,7 @@ function Signup() {
         </div>
       </form>
       {errors.map((err) => (
-          <Error key={err}>{err}</Error>
+          <p  className="text-red-600 text-base" key={err}>{err}</p>
         ))}
     </BaseForm>
     </>

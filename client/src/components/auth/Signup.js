@@ -6,7 +6,7 @@ import BaseForm from './BaseForm'
 
 function Signup() {
   const [userSignupData, setUserSignupData] = useState({})
-  const {setAuth} = useUser()
+  const [errors, setErrors] = useState([])
   const navigate = useNavigate()
 
   const title = "REGISTER FOR AN ACCOUNT"
@@ -23,10 +23,13 @@ function Signup() {
       body: JSON.stringify(userSignupData)
     }
     )
-    .then(res => res.json())
-    .then(data => {
-      setAuth(data)
-      navigate("/login")
+    then(res => {
+      if (res.ok){
+        res.json()
+        .then(()=> navigate('/login'))
+      }else{
+        res.json().then((err) => setErrors(err.errors));
+      }
     })
 
   }
@@ -85,6 +88,9 @@ function Signup() {
           </button>
         </div>
       </form>
+      {errors.map((err) => (
+          <Error key={err}>{err}</Error>
+        ))}
     </BaseForm>
     </>
   )

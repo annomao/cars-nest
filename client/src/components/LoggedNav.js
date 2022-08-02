@@ -52,9 +52,9 @@ function LoggedNav() {
             </ul>
 
             <div className="mt-3 space-y-2 md:hidden md:inline-block">
-              <p
+              <span
                 className="inline-block w-full px-4 py-2 text-center text-white bg-cBlue rounded-md shadow hover:bg-gray-800">
-                {auth.username} </p>
+                {auth.username} </span>
               <button 
                 className="inline-block w-full px-4 py-2 text-center text-cBlue bg-white rounded-md shadow hover:text-gray-800">
                 Log Out </button>
@@ -62,8 +62,8 @@ function LoggedNav() {
           </div>
         </div>
         <div className="hidden space-x-2 md:inline-block">
-          <p
-            className="px-4 py-2 text-white bg-cBlue rounded-md shadow hover:bg-gray-800">{auth.username}</p>
+          <span
+            className="px-4 py-2 text-white bg-cBlue rounded-md shadow hover:bg-gray-800">{auth.username}</span>
           <button onClick={handleLogout}
             className="px-4 py-2 text-cBlue bg-white rounded-md shadow hover:text-gray-800">Log Out</button>
         </div>

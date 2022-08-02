@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 function Login() {
   const [userData, setUserData] = useState({})
+  const [errors, setErrors] = useState([])
   const { setAuth } = useUser()
   const navigate = useNavigate()
 
@@ -23,12 +24,17 @@ function Login() {
       body: JSON.stringify(userData)
     }
     )
-    .then(res => res.json())
-    .then(data => {
-      setAuth(data)
-      navigate("/question")
+    .then(res => {
+      if (res.ok){
+        res.json()
+        .then( data => {
+          setAuth(data)
+          navigate("/")
+        })
+      }else{
+        res.json().then((err) => setErrors(err.errors));
+      }
     })
-
   }
 
   function handleChange(event){
@@ -76,6 +82,9 @@ function Login() {
           </button>
         </div>
       </form>
+      {errors.map((err) => (
+          <Error key={err}>{err}</Error>
+        ))}
     </BaseForm>
     </>
   )

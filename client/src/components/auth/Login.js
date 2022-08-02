@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import BaseForm from './BaseForm'
 import { FaAt,FaLock,FaArrowRight } from 'react-icons/fa'
 import useUser from '../../hooks/useUser'
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
   const [userData, setUserData] = useState({})
   const { setAuth } = useUser()
+  const navigate = useNavigate()
 
   const title = "LOGIN TO YOUR ACCOUNT"
   const check = "Don't have an account?"
@@ -22,7 +24,10 @@ function Login() {
     }
     )
     .then(res => res.json())
-    .then(data => setAuth(data))
+    .then(data => {
+      setAuth(data)
+      navigate("/question")
+    })
 
   }
 

@@ -6,6 +6,7 @@ import BaseForm from './BaseForm'
 function Signup() {
   const [userSignupData, setUserSignupData] = useState({})
   const {setAuth} = useUser()
+  const navigate = useNavigate()
 
   const title = "REGISTER FOR AN ACCOUNT"
   const check = "Already have an account?"
@@ -22,7 +23,10 @@ function Signup() {
     }
     )
     .then(res => res.json())
-    .then(data => setAuth(data))
+    .then(data => {
+      setAuth(data)
+      navigate("/login")
+    })
 
   }
 

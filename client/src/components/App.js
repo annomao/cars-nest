@@ -20,7 +20,7 @@ function App() {
         .then((user) => setAuth(user));
       }
     });
-  }, [setAuth])
+  }, [])
 
   return (
     <>

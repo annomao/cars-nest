@@ -5,8 +5,9 @@ class UsersController < ApplicationController
     render json: user, status: :created
   end
 
-  def show
-    render json: @current_user
+  def 
+    user = User.find_by(id: session[:user_id])
+    render json: user, status: :ok
   end
 
   private 

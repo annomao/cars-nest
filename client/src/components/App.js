@@ -14,10 +14,12 @@ function App() {
   useEffect(() => {
     // auto-login
     fetch("https://cars-nest.herokuapp.com/api/v1/me")
-    .then((r) => {
-      if (r.ok) {
-        r.json()
+    .then((res) => {
+      if (res.ok) {
+        res.json()
         .then((user) => setAuth(user));
+      }else{
+        setAuth(null)
       }
     });
   }, [])

@@ -4,9 +4,12 @@ import useUser from '../hooks/useUser';
 import Login from './auth/Login';
 import Signup from './auth/Signup';
 import Home from './landing/Home';
+import QuestionForm from './landing/QuestionForm';
 import Review from './landing/Review';
+import ReviewForm from './landing/ReviewForm';
 import LoggedNav from './LoggedNav';
 import Navbar from './Navbar';
+import PrivateRoutes from './PrivateRoute';
 
 function App() {
   const {auth, setAuth} = useUser()
@@ -33,6 +36,10 @@ function App() {
         <Route path='/review' element={<Review/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
+        <Route element={ <PrivateRoutes/> }>
+          <Route path="/add_question" element={<QuestionForm/>}/>
+          <Route path="/add_review" element={<ReviewForm/>}/>
+        </Route>
       </Routes>
     </>
   )

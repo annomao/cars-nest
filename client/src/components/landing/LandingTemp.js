@@ -15,7 +15,10 @@ function LandingTemp(props) {
       </div>
       <div>
         <div className="flex">
-          <button type="submit" className="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-cBlue hover:bg-grey-800 py-2 transition duration-150 ease-in">
+          <button 
+          onClick={props.handleClick}
+          type="submit" 
+          className="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-cBlue hover:bg-grey-800 py-2 transition duration-150 ease-in">
             <span className="pl-2"><FaPlus/></span>
             <span className="px-2 uppercase">{props.text}</span>
           </button>

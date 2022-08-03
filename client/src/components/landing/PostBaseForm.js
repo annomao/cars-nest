@@ -8,7 +8,7 @@ function PostBaseForm(props) {
       <div className="flex flex-col bg-white px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-md w-full max-w-md">
         <div className="font-medium self-center text-xl sm:text-2xl uppercase text-cBlue">{props.title}</div>
         <div className="mt-10">
-        <form onSubmit={handleFileUpload}>
+        <form onSubmit={props.handleFileUpload}>
         <div className="flex flex-col mb-6">
             <input accept="image/*"
             id="image" 

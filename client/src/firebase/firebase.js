@@ -1,7 +1,6 @@
 
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getStorage } from "firebase/storage"
+import { getDownloadURL,uploadBytes, getStorage,ref } from "firebase/storage"
 
 const firebaseConfig = {
   apiKey: "AIzaSyAkTTXJ4CoHLzM7ceKn236xz4DV6y3ivsQ",
@@ -16,4 +15,16 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
-const analytics = getAnalytics(app);
+
+const handleImageUpload= (image,imageUrl) => {
+  const imageRef = ref(storage, `images/${image.name}`);
+  uploadBytes(imageRef, image)
+  .then(()=>{
+    getDownloadURL(imageRef)
+    .then((url)=>{
+      imageUrl(url)
+    })
+  })
+}
+
+export default handleImageUpload

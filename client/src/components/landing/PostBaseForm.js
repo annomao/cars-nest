@@ -8,7 +8,6 @@ function PostBaseForm(props) {
       <div className="flex flex-col bg-white px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-md w-full max-w-md">
         <div className="font-medium self-center text-xl sm:text-2xl uppercase text-cBlue">{props.title}</div>
         <div className="mt-10 mb-6">
-        <form onSubmit={props.handleFileUpload}>
         <div className="flex flex-col mb-6">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="image">
           Image Upload
@@ -22,12 +21,12 @@ function PostBaseForm(props) {
             />
         </div>
         <div className="flex w-full">
-          <button type="submit" className="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-cBlue hover:bg-grey-800 py-2 transition duration-150 ease-in">
+          <button onClick={props.handleFileUpload}
+           className="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-cBlue hover:bg-grey-800 py-2 transition duration-150 ease-in">
             <span className="mr-2 uppercase">Upload Image</span>
             <span><FaUpload/></span>
           </button>
         </div>
-        </form>
         <form onSubmit={props.handleSubmit}>
         <div className="flex flex-col mb-6">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="title">

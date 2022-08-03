@@ -1,5 +1,4 @@
 class QuestionsController < ApplicationController
-  class questionsController < ApplicationController
     def index
       render json: Question.order(created_at: :desc)
     end
@@ -34,7 +33,5 @@ class QuestionsController < ApplicationController
     def allowed_params
       params.permit(:title,:description,:image)
     end
-  
-  end
   
 end

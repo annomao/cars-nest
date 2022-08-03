@@ -73,6 +73,9 @@ function PostBaseForm(props) {
           </button>
         </div>
       </form>
+      {props.errors.map((err) => (
+          <p  className="text-red-600 text-base" key={err}>{err}</p>
+        ))}
         </div>
         </div>
       </div>

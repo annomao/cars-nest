@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import useUser from '../../hooks/useUser'
 import handleImageUpload from '../../firebase/firebase'
 import PostBaseForm from './PostBaseForm'
 
@@ -9,8 +8,6 @@ function QuestionForm() {
   const [image, setImage] = useState("")
   const [imgUrl, setImgUrl] = useState(null)
   const [errors, setErrors] = useState([])
-
-  const { auth } = useUser()
   const navigate = useNavigate()
 
   function handleUpload(e){
@@ -32,8 +29,7 @@ function QuestionForm() {
     e.preventDefault()
     const questionData = {
       ...question,
-      image: imgUrl,
-      user_id: auth.id
+      image: imgUrl
     }
     fetch("https://cars-nest.herokuapp.com/api/v1/questions",{
       method: "POST",
@@ -57,6 +53,8 @@ function QuestionForm() {
   return (
     <>
     <PostBaseForm 
+    title = "Post a question"
+    errors = {errors}
     handleChange={ handleChange }
     handleupload={ handleUpload }
     handleSubmit= { handleSubmit }

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import useUser from '../../hooks/useUser'
 import handleImageUpload from '../../firebase/firebase'
 import PostBaseForm from './PostBaseForm'
 
@@ -9,8 +8,6 @@ function ReviewForm() {
   const [image, setImage] = useState("")
   const [imgUrl, setImgUrl] = useState("")
   const [errors, setErrors] = useState([])
-
-  const { auth } = useUser()
   const navigate = useNavigate()
 
   function handleUpload(e){
@@ -34,8 +31,7 @@ function ReviewForm() {
       ...review,
       image: imgUrl,
       upvotes:0,
-      downvotes:0,
-      user_id: auth.id
+      downvotes:0
     }
     fetch("https://cars-nest.herokuapp.com/api/v1/reviews",{
       method: "POST",
@@ -60,6 +56,7 @@ function ReviewForm() {
     <>
     <PostBaseForm 
     title = "Add a Car Review"
+    errors = {errors}
     handleChange={ handleChange }
     handleupload={ handleUpload }
     handleSubmit= { handleSubmit }

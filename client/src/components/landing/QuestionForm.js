@@ -35,7 +35,7 @@ function QuestionForm() {
       image: imgUrl,
       user_id: auth.id
     }
-    fetch("https://cars-nest.herokuapp.com/api/v1/",{
+    fetch("https://cars-nest.herokuapp.com/api/v1/questions",{
       method: "POST",
       headers: {
         "Content-Type" : "application/json"

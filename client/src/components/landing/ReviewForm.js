@@ -37,7 +37,7 @@ function ReviewForm() {
       downvotes:0,
       user_id: auth.id
     }
-    fetch("https://cars-nest.herokuapp.com/api/v1/",{
+    fetch("https://cars-nest.herokuapp.com/api/v1/reviews",{
       method: "POST",
       headers: {
         "Content-Type" : "application/json"

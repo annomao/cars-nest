@@ -6,10 +6,10 @@ import Comment from './Comment'
 function QuestionPost() {
   const [question, setQuestion] = useState({})
   const [errors, setErrors] = useState([])
-  let { id } = useParams()
+  let params = useParams()
 
   useEffect(()=>{
-    fetch(`https://cars-nest.herokuapp.com/api/v1/questions/${id}`)
+    fetch(`https://cars-nest.herokuapp.com/api/v1/questions/${params.id}`)
     .then(res => {
       if(res.ok){
         res.json()
@@ -19,7 +19,8 @@ function QuestionPost() {
         res.json().then((err) => setErrors(err.errors));
       }
       })
-  },[id])
+  },[params.id])
+
   return (
     <>
     <div className="">

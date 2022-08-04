@@ -6,10 +6,10 @@ import Comment from './Comment'
 function ReviewPost() {
   const [review,setReview] = useState({})
   const [errors, setErrors] = useState([])
-  let { id } = useParams()
+  let params = useParams()
 
   useEffect(()=>{
-    fetch(`https://cars-nest.herokuapp.com/api/v1/reviews/${id}`)
+    fetch(`https://cars-nest.herokuapp.com/api/v1/reviews/${params.id}`)
     .then(res => {
       if(res.ok){
         res.json()
@@ -19,7 +19,7 @@ function ReviewPost() {
         res.json().then((err) => setErrors(err.errors));
       }
       })
-  },[id])
+  },[params.id])
 
   return (
     <>

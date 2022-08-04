@@ -7,6 +7,7 @@ function ReviewPost({reviews}) {
   let params = useParams()
   let id = parseInt(params.id)
   const review = reviews.find(review => review.id === id)
+  console.log(review)
 
   return (
     <>

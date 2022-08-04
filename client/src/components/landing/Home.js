@@ -6,7 +6,7 @@ function Home() {
   const [questions, setQuestions] = useState([])
 
   useEffect(()=>{
-    fetch("https://cars-nest.herokuapp.com/api/v1/reviews")
+    fetch("https://cars-nest.herokuapp.com/api/v1/questions")
     .then(res => res.json())
     .then(data => setQuestions(data))
   })

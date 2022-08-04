@@ -8,9 +8,9 @@ function DisplayCard({post}) {
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{post.title}</div>
         <p className="text-gray-700 text-base">
-          {post.description}
+          {post.summary}
         </p>
-        <div className="font-bold text-xl mb-2">{post.user.username}</div>
+        <div className="font-base text-xl mb-2">{post.user.username}</div>
       </div>
       <div className="px-6 pt-4 pb-2">
         {post.categories.split(",").map((category)=>{

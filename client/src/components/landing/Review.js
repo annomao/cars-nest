@@ -15,7 +15,7 @@ function Review() {
   const text = "Post a review"
 
   const displayedReviews = reviews.map(review =>{
-    return <DisplayCard key={review.id} post={review} to={`review/${review.id}`}/>
+    return <DisplayCard key={review.id} post={review} to={review.id}/>
   })
   return (
     <>

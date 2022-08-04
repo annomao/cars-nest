@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect } from 'react';
 import { Routes,Route, useNavigate } from 'react-router-dom'
 import useUser from '../hooks/useUser';
 import Login from './auth/Login';
@@ -16,20 +16,6 @@ import PrivateRoutes from './PrivateRoute';
 function App() {
   const {auth, setAuth} = useUser()
   const navigate = useNavigate()
-  const[reviews,setReviews] = useState([])
-  const [questions, setQuestions] = useState([])
-
-  useEffect(()=>{
-    fetch("https://cars-nest.herokuapp.com/api/v1/questions")
-    .then(res => res.json())
-    .then(data => setQuestions(data))
-  },[])
-
-  useEffect(()=>{
-    fetch("https://cars-nest.herokuapp.com/api/v1/reviews")
-    .then(res => res.json())
-    .then(data => setReviews(data))
-  },[])
 
   useEffect(() => {
     // auto-login
@@ -52,10 +38,10 @@ function App() {
       {auth ? <LoggedNav/> : <Navbar/> }
       <Routes>
         <Route path='/' element={<Home/>}/>
-        <Route path='/question' element={<Home questions={questions}/>}/>
-        <Route path="/display_question/:id" element={<QuestionPost questions={questions}/>} />
-        <Route path='/review' element={<Review reviews={reviews}/>}/>
-        <Route path="/display_review/:id" element={<ReviewPost reviews={reviews}/>} />
+        <Route path='/question' element={<Home/>}/>
+        <Route path="/display_question/:id" element={<QuestionPost/>} />
+        <Route path='/review' element={<Review/>}/>
+        <Route path="/display_review/:id" element={<ReviewPost/>} />
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route element={ <PrivateRoutes/> }>

@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import DisplayCard from './DisplayCard'
 import LandingTemp from './LandingTemp'
 
-function Review({reviews}) {
+function Review() {
+  const[reviews,setReviews] = useState([])
+
+  useEffect(()=>{
+    fetch("https://cars-nest.herokuapp.com/api/v1/reviews")
+    .then(res => res.json())
+    .then(data => setReviews(data))
+  },[])
+
   const holder = "Search by tag...."
   const text = "Post a review"
 

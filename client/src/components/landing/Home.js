@@ -7,8 +7,11 @@ function Home() {
 
   useEffect(()=>{
     fetch("https://cars-nest.herokuapp.com/api/v1/questions")
-    .then(res => res.json())
-    .then(data => setQuestions(data))
+    .then(res => {
+      console.log(res)
+      res.json()
+    })
+    .then(data => console.log(data))
   },[])
 
   const holder = "Search by question...."

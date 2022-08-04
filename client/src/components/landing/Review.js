@@ -7,8 +7,11 @@ function Review() {
 
   useEffect(()=>{
     fetch("https://cars-nest.herokuapp.com/api/v1/reviews")
-    .then(res => res.json())
-    .then(data => setReviews(data))
+    .then(res => {
+      console.log(res)
+      res.json()
+    })
+    .then(data => console.log(data))
   },[])
 
   const holder = "Search by tag...."

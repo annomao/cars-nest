@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Routes,Route } from 'react-router-dom'
+import { Routes,Route, useNavigate } from 'react-router-dom'
 import useUser from '../hooks/useUser';
 import Login from './auth/Login';
 import Signup from './auth/Signup';
@@ -13,6 +13,7 @@ import PrivateRoutes from './PrivateRoute';
 
 function App() {
   const {auth, setAuth} = useUser()
+  const navigate = useNavigate()
 
   useEffect(() => {
     // auto-login
@@ -20,7 +21,10 @@ function App() {
     .then((res) => {
       if (res.ok) {
         res.json()
-        .then((user) => setAuth(user));
+        .then((user) => {
+          setAuth(user)
+          navigate("/")
+        });
       }else{
         setAuth(null)
       }

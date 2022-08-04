@@ -12,7 +12,7 @@ function QuestionPost() {
     fetch(`https://cars-nest.herokuapp.com/api/v1/questions/${id}`)
     .then(res => res.json())
     .then(data => setQuestion(data))
-  },[id])
+  },[])
 
   return (
     <>

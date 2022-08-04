@@ -16,7 +16,7 @@ function ReviewPost() {
     fetch(`https://cars-nest.herokuapp.com/api/v1/reviews/${id}`)
     .then(res=> res.json())
     .then(data=>setReview(data))
-  },[id])
+  },[])
 
   console.log(review)
 

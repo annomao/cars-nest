@@ -10,8 +10,11 @@ function QuestionPost() {
 
   useEffect(()=>{
     fetch(`https://cars-nest.herokuapp.com/api/v1/questions/${id}`)
-    .then(res => res.json())
-    .then(data => setQuestion(data))
+    .then(res => {
+      res.json()
+      console.log(res)
+    })
+    .then(data => console.log(data))
   },[])
 
   return (

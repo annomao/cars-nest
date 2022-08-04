@@ -10,8 +10,11 @@ function ReviewPost() {
 
   useEffect(()=>{
     fetch(`https://cars-nest.herokuapp.com/api/v1/reviews/${id}`)
-    .then(res => res.json())
-    .then(data => setReview(data))
+    .then(res => {
+      res.json()
+      console.log(res)
+    })
+    .then(data => console.log(data))
   },[])
 
   return (

@@ -8,17 +8,12 @@ function ReviewPost() {
   let params = useParams()
   let id = parseInt(params.id)
 
-  console.log(params)
-  
-
-  useEffect(()=>{
-
+  useEffect(() => {
     fetch(`https://cars-nest.herokuapp.com/api/v1/reviews/${id}`)
-    .then(res=> res.json())
-    .then(data=>setReview(data))
-  },[])
-
-  console.log(review)
+    .then(res => res.json())
+    .then(data => setReview(data))
+    .catch((err) => console.log(err.message))
+  }, [])
 
   return (
     <>

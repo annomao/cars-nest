@@ -20,7 +20,7 @@ function Review() {
   return (
     <>
     <LandingTemp holder={holder} text={text} linkTo="/add_review"/>
-    <div className="min-h-screen flex justify-center">
+    <div className="min-h-screen items-center flex justify-center">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-5"> 
          {displayedReviews}
       </div>

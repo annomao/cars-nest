@@ -5,7 +5,7 @@ function DisplayCard({post,linkTo}) {
   return (
     <>
     <div className="max-w-sm rounded overflow-hidden shadow-lg">
-      <img className="w-full" src={post.image} alt="Sunset in the mountains"/>
+      <img className="w-full" src={post.image} alt="car"/>
       <NavLink to={linkTo} className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{post.title}</div>
         <p className="text-gray-700 text-base">

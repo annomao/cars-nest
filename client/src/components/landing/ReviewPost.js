@@ -8,6 +8,9 @@ function ReviewPost() {
   const [errors, setErrors] = useState([])
   let params = useParams()
 
+  console.log(params)
+  console.log(review)
+
   useEffect(()=>{
     fetch(`https://cars-nest.herokuapp.com/api/v1/reviews/${params.id}`)
     .then(res => {

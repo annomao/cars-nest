@@ -15,7 +15,7 @@ function Home() {
   const text = "ask a question"
 
   const displayedQuestions = questions.map(question =>{
-    return <DisplayCard key={question.id} post={question}/>
+    return <DisplayCard key={question.id} post={question} to={`review/${question.id}`}/>
   })
 
   return (

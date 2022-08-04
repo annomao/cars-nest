@@ -13,6 +13,8 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    review = find_review
+    render json: review, status: :ok
   end
 
   def update

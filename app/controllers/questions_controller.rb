@@ -13,6 +13,8 @@ class QuestionsController < ApplicationController
     end
   
     def show
+      question = find_question
+      render json: question, status: :ok
     end
   
     def update

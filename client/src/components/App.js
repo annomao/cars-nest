@@ -5,7 +5,9 @@ import Login from './auth/Login';
 import Signup from './auth/Signup';
 import Home from './landing/Home';
 import QuestionForm from './landing/QuestionForm';
+import QuestionPost from './landing/QuestionPost';
 import Review from './landing/Review';
+import ReviewPost from './landing/ReviewPost';
 import ReviewForm from './landing/ReviewForm';
 import LoggedNav from './LoggedNav';
 import Navbar from './Navbar';
@@ -37,7 +39,9 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/question' element={<Home/>}/>
+        <Route path="/question/:id" element={<QuestionPost/>} />
         <Route path='/review' element={<Review/>}/>
+        <Route path="/review/:id" element={<ReviewPost/>} />
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route element={ <PrivateRoutes/> }>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaThumbsDown,FaThumbsUp } from 'react-icons/fa'
 
-function ReviewPost() {
+function ReviewPost({review}) {
   return (
     <>
     <div className="max-w-sm w-full lg:max-w-full lg:flex">

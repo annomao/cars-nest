@@ -1,10 +1,14 @@
 class QuestionsController < ApplicationController
+  before_action :authorize
+  skip_before_action :authorize, only: [:index, :show]
+  
     def index
       render json: Question.order(created_at: :desc)
     end
   
     def create
-      question = @current_user.questions.create!(allowed_params)
+      user = find_user
+      question = user.questions.create!(allowed_params)
       render json: question, status: :created
     end
   

@@ -1,10 +1,14 @@
 class ReviewsController < ApplicationController
+  before_action :authorize
+  skip_before_action :authorize, only: [:index, :show]
+
   def index
     render json: Review.order(created_at: :desc)
   end
 
   def create
-    review = @current_user.reviews.create!(allowed_params)
+    user = find_user
+    review = user.reviews.create!(allowed_params)
     render json: review, status: :created
   end
 

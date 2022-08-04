@@ -12,9 +12,6 @@ function ReviewForm() {
   const navigate = useNavigate()
 
   function handleUpload(e){
-    const image = e.target.files[0]
-  }
-  function handleUpload(e){
     setImage(e.target.files[0])
     
   }

@@ -31,7 +31,7 @@ function QuestionPost() {
         <p className="text-gray-700 text-xl font-bold">
           {question.description}
         </p>
-        <div className="text-base mb-2">{question.user.username}</div>
+        {/* <div className="text-base mb-2">{question.user.username}</div> */}
       <div className="pt-4 pb-2">
       {question.categories.split(",").map((category)=>{
           return <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{category}</span>

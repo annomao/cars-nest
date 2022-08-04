@@ -36,7 +36,7 @@ function ReviewPost() {
         </div>
         <div className="flex items-center">
           <div className="text-sm">
-            <p className="text-gray-900 leading-none">{review.user.username}</p>
+            {/* <p className="text-gray-900 leading-none">{review.user.username}</p> */}
             <div className="pt-4 pb-2">
               <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><FaThumbsUp/> {review.upvotes}</span>
               <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><FaThumbsDown/> {review.downvotes}</span>

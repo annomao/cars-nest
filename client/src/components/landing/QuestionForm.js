@@ -13,7 +13,16 @@ function QuestionForm() {
 
   function handleUpload(e){
     setImage(e.target.files[0])
-    handleImageUpload(image, setImgUrl,setProgress)
+    
+  }
+
+  function handleImgUpload(){
+    if(!image){
+      alert("Kindly choose an image file before proceeding")
+    }
+    else{
+      handleImageUpload(image, setImgUrl,setProgress)
+    }
   }
 
   function handleChange(e){
@@ -56,6 +65,7 @@ function QuestionForm() {
     handleChange={ handleChange }
     handleupload={ handleUpload }
     handleSubmit= { handleSubmit }
+    handleImgUpload = {handleImgUpload}
     progress = {progress}
     />
     </>

@@ -16,7 +16,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
-const handleImageUpload= (file,setImgUrl,setProgresspercent) => {
+const handleImageUpload= (file,setImgUrl,setProgress) => {
 
     const storageRef = ref(storage, `images/${file.name}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
@@ -27,7 +27,7 @@ const handleImageUpload= (file,setImgUrl,setProgresspercent) => {
         const progress = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
-        setProgresspercent(progress);
+        setProgress(progress);
       },
       (error) => {
         alert(error);

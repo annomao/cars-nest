@@ -5,14 +5,27 @@ import PostBaseForm from './PostBaseForm'
 
 function ReviewForm() {
   const [review, setReview] = useState({})
+  const [image, setImage] = useState("")
   const [imgUrl, setImgUrl] = useState("")
   const [errors, setErrors] = useState([])
   const [progress, setProgress] = useState(0)
   const navigate = useNavigate()
 
   function handleUpload(e){
-    const image = e.target?.files[0]
-    handleImageUpload(image, setImgUrl,setProgress)
+    const image = e.target.files[0]
+  }
+  function handleUpload(e){
+    setImage(e.target.files[0])
+    
+  }
+
+  function handleImgUpload(){
+    if(!image){
+      alert("Kindly choose an image file before proceeding")
+    }
+    else{
+      handleImageUpload(image, setImgUrl,setProgress)
+    }
   }
 
   function handleChange(e){
@@ -57,6 +70,7 @@ function ReviewForm() {
     handleChange={ handleChange }
     handleupload={ handleUpload }
     handleSubmit= { handleSubmit }
+    handleImgUpload = {handleImgUpload}
     progress = {progress}
     />
     </>

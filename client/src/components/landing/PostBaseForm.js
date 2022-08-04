@@ -8,6 +8,30 @@ function PostBaseForm(props) {
       <div className="flex flex-col bg-white px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-md w-full max-w-md">
         <div className="font-medium self-center text-xl sm:text-2xl uppercase text-cBlue">{props.title}</div>
         <div className="mt-10 mb-6 p-4">
+        <div className="flex flex-col mb-6">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="image">
+          Image Upload
+          </label>
+          <input accept="image/*"
+            id="image" 
+            type="file" 
+            name="image" 
+            className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 border-b border-cBlue bg-neutral-100 w-full py-2 focus:outline-none focus:border-blue-400" 
+            onChange={props.handleUpload}
+            />
+            <button onClick={handleImgUpload}
+            className="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-cBlue hover:bg-grey-800 py-2 transition duration-150 ease-in">
+            <span className="m-2 uppercase">Upload</span>
+          </button>
+
+          {props.progress > 0 && props.progress < 100 ? (
+              <span className="text-red-600">
+                {`Uploading... ${props.progress}%`}
+              </span>
+            ) : props.progress === 100 ? (
+              <span className="text-green-600">Upload complete</span>
+            ) : null}
+        </div>
         <form className="mt-6" onSubmit={props.handleSubmit}>
         <div className="flex flex-col mb-6">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
@@ -46,26 +70,6 @@ function PostBaseForm(props) {
             placeholder="Enter categories"
             onChange={props.handleChange}
             />
-        </div>
-        <div className="flex flex-col mb-6">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="image">
-          Image Upload
-          </label>
-          <input accept="image/*"
-            id="image" 
-            type="file" 
-            name="image" 
-            className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 border-b border-cBlue bg-neutral-100 w-full py-2 focus:outline-none focus:border-blue-400" 
-            onChange={props.handleUpload}
-            />
-
-          {props.progress > 0 && props.progress < 100 ? (
-              <span className="text-red-600">
-                {`Uploading... ${props.progress}%`}
-              </span>
-            ) : props.progress === 100 ? (
-              <span className="text-green-600">Upload complete</span>
-            ) : null}
         </div>
         <div className="flex w-full">
           <button type="submit" className="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-cBlue hover:bg-grey-800 py-2 w-full transition duration-150 ease-in">

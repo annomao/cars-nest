@@ -16,15 +16,28 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
-const handleImageUpload= (image,imageUrl) => {
-  const imageRef = ref(storage, `images/${image.name}`);
-  uploadBytes(imageRef, image)
-  .then(()=>{
-    getDownloadURL(imageRef)
-    .then((url)=>{
-      imageUrl(url)
-    })
-  })
+const handleImageUpload= (file,setImgUrl,setProgresspercent) => {
+
+    const storageRef = ref(storage, `images/${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        setProgresspercent(progress);
+      },
+      (error) => {
+        alert(error);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          setImgUrl(downloadURL);
+        });
+      }
+    );
 }
 
 export default handleImageUpload

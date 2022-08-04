@@ -8,14 +8,12 @@ function QuestionForm() {
   const [image, setImage] = useState("")
   const [imgUrl, setImgUrl] = useState(null)
   const [errors, setErrors] = useState([])
+  const [progress, setProgress] = useState(0)
   const navigate = useNavigate()
 
   function handleUpload(e){
     setImage(e.target.files[0])
-  }
-
-  function handleFileUpload(){
-    handleImageUpload(image, setImgUrl)
+    handleImageUpload(image, setImgUrl,setProgress)
   }
 
   function handleChange(e){
@@ -58,7 +56,7 @@ function QuestionForm() {
     handleChange={ handleChange }
     handleupload={ handleUpload }
     handleSubmit= { handleSubmit }
-    handleFileUpload = {handleFileUpload}
+    progress = {progress}
     />
     </>
   )

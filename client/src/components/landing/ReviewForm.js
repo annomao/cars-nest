@@ -5,17 +5,14 @@ import PostBaseForm from './PostBaseForm'
 
 function ReviewForm() {
   const [review, setReview] = useState({})
-  const [image, setImage] = useState("")
   const [imgUrl, setImgUrl] = useState("")
   const [errors, setErrors] = useState([])
+  const [progress, setProgress] = useState(0)
   const navigate = useNavigate()
 
   function handleUpload(e){
-    setImage(e.target.files[0])
-  }
-
-  function handleFileUpload(){
-    handleImageUpload(image, setImgUrl)
+    const image = e.target?.files[0]
+    handleImageUpload(image, setImgUrl,setProgress)
   }
 
   function handleChange(e){
@@ -60,7 +57,7 @@ function ReviewForm() {
     handleChange={ handleChange }
     handleupload={ handleUpload }
     handleSubmit= { handleSubmit }
-    handleFileUpload = {handleFileUpload}
+    progress = {progress}
     />
     </>
   )

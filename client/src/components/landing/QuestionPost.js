@@ -1,21 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { FaThumbsDown,FaThumbsUp } from 'react-icons/fa'
-import { useParams } from 'react-router-dom'
 import Comment from './Comment'
 
-function QuestionPost() {
-  const [question, setQuestion] = useState({})
-  let params = useParams()
-  let id = parseInt(params.id)
-
-  useEffect(()=>{
-    fetch(`https://cars-nest.herokuapp.com/api/v1/questions/${id}`)
-    .then(res => {
-      res.json()
-      console.log(res)
-    })
-    .then(data => console.log(data))
-  },[])
+function QuestionPost({question}) {
 
   return (
     <>

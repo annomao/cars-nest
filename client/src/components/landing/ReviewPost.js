@@ -1,18 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { FaThumbsDown,FaThumbsUp } from 'react-icons/fa'
 import { useParams } from 'react-router-dom'
 import Comment from './Comment'
 
-function ReviewPost() {
-  const [review,setReview] = useState({})
+function ReviewPost({reviews}) {
   let params = useParams()
   let id = parseInt(params.id)
-
-  useEffect(()=>{
-    fetch(`https://cars-nest.herokuapp.com/api/v1/reviews/${id}`)
-    .then(res => res.json())
-    .then(data => setReview(data))
-  },[])
+  const review = reviews.find(review => review.id === id)
 
   return (
     <>

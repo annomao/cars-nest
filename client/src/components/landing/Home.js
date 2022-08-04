@@ -1,16 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import DisplayCard from './DisplayCard'
 import LandingTemp from './LandingTemp'
 
-function Home() {
-  const [questions, setQuestions] = useState([])
-
-  useEffect(()=>{
-    fetch("https://cars-nest.herokuapp.com/api/v1/questions")
-    .then(res => res.json())
-    .then(data => setQuestions(data))
-  },[])
-
+function Home({questions}) {
   const holder = "Search by question...."
   const text = "ask a question"
 

@@ -5,23 +5,23 @@ import PostBaseForm from './PostBaseForm'
 
 function QuestionForm() {
   const [question, setQuestion] = useState({})
-  const [image, setImage] = useState("")
+  const [file, setFile] = useState("")
   const [imgUrl, setImgUrl] = useState(null)
   const [errors, setErrors] = useState([])
   const [progress, setProgress] = useState(0)
   const navigate = useNavigate()
 
   function handleUpload(e){
-    setImage(e.target.files[0])
+    setFile(e.target.files[0])
     
   }
 
   function handleImgUpload(){
-    if(!image){
+    if(!file){
       alert("Kindly choose an image file before proceeding")
     }
     else{
-      handleImageUpload(image, setImgUrl,setProgress)
+      handleImageUpload(file, setImgUrl,setProgress)
     }
   }
 
@@ -63,7 +63,7 @@ function QuestionForm() {
     title = "Post a question"
     errors = {errors}
     handleChange={ handleChange }
-    handleupload={ handleUpload }
+    handleUpload={ handleUpload }
     handleSubmit= { handleSubmit }
     handleImgUpload = {handleImgUpload}
     progress = {progress}

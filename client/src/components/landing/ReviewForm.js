@@ -5,23 +5,25 @@ import PostBaseForm from './PostBaseForm'
 
 function ReviewForm() {
   const [review, setReview] = useState({})
-  const [image, setImage] = useState("")
+  const [file, setFile] = useState("")
   const [imgUrl, setImgUrl] = useState("")
   const [errors, setErrors] = useState([])
   const [progress, setProgress] = useState(0)
   const navigate = useNavigate()
 
   function handleUpload(e){
-    setImage(e.target.files[0])
+    setFile(e.target.files[0])
+    console.log(e)
     
   }
 
   function handleImgUpload(){
-    if(!image){
+    console.log(file)
+    if(!file){
       alert("Kindly choose an image file before proceeding")
     }
     else{
-      handleImageUpload(image, setImgUrl,setProgress)
+      handleImageUpload(file, setImgUrl,setProgress)
     }
   }
 
@@ -65,7 +67,7 @@ function ReviewForm() {
     title = "Add a Car Review"
     errors = {errors}
     handleChange={ handleChange }
-    handleupload={ handleUpload }
+    handleUpload={ handleUpload }
     handleSubmit= { handleSubmit }
     handleImgUpload = {handleImgUpload}
     progress = {progress}

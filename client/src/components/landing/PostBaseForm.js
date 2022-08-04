@@ -12,17 +12,15 @@ function PostBaseForm(props) {
           <label class="block text-gray-700 text-sm font-bold mb-2" for="image">
           Image Upload
           </label>
-          <input accept="image/*"
-            id="image" 
-            type="file" 
+          <input type="file" accept="image/*"
             name="image" 
             className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 border-b border-cBlue bg-neutral-100 w-full py-2 focus:outline-none focus:border-blue-400" 
             onChange={props.handleUpload}
             />
-            <button onClick={props.handleImgUpload}
+            <button onClick={props.handleImgUpload} 
             className="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-cBlue hover:bg-grey-800 py-2 transition duration-150 ease-in">
-            <span className="m-2 uppercase">Upload</span>
-          </button>
+              Upload Image
+           </button>
 
           {props.progress > 0 && props.progress < 100 ? (
               <span className="text-red-600">

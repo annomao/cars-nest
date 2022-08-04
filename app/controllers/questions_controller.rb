@@ -35,7 +35,7 @@ class QuestionsController < ApplicationController
     end
   
     def allowed_params
-      params.permit(:title,:description,:image)
+      params.permit(:title,:description,:categories,:image)
     end
   
 end

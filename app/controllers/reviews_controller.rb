@@ -35,7 +35,7 @@ class ReviewsController < ApplicationController
   end
 
   def allowed_params
-    params.permit(:title,:description,:upvotes, :downvotes, :image)
+    params.permit(:title,:description,:upvotes,:categories,:downvotes, :image)
   end
 
 end

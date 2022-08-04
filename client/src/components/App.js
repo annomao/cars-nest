@@ -38,10 +38,12 @@ function App() {
       {auth ? <LoggedNav/> : <Navbar/> }
       <Routes>
         <Route path='/' element={<Home/>}/>
-        <Route path='/question' element={<Home/>}/>
-        <Route path="/question/:id" element={<QuestionPost/>} />
-        <Route path='/review' element={<Review/>}/>
-        <Route path="/review/:id" element={<ReviewPost/>} />
+        <Route path='/question' element={<Home/>}>
+          <Route path=":id" element={<QuestionPost/>} />
+        </Route>
+        <Route path='/review' element={<Review/>}>
+          <Route path=":id" element={<ReviewPost/>} />
+        </Route>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route element={ <PrivateRoutes/> }>

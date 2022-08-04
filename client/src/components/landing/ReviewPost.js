@@ -5,25 +5,20 @@ import Comment from './Comment'
 
 function ReviewPost() {
   const [review,setReview] = useState({})
-  const [errors, setErrors] = useState([])
   let params = useParams()
   let id = parseInt(params.id)
 
   console.log(params)
-  console.log(review)
+  
 
   useEffect(()=>{
+
     fetch(`https://cars-nest.herokuapp.com/api/v1/reviews/${id}`)
-    .then(res => {
-      if(res.ok){
-        res.json()
-        .then(data => setReview(data))
-      }
-      else{
-        res.json().then((err) => setErrors(err.errors));
-      }
-      })
-  },[params.id])
+    .then(res=> res.json())
+    .then(data=>setReview(data))
+  },[id])
+
+  console.log(review)
 
   return (
     <>
@@ -32,9 +27,6 @@ function ReviewPost() {
       </div>
       <div className="border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
         <div className="mb-8">
-        {errors.map((err) => (
-          <p  className="text-red-600 font-bold text-2xl mb-4" key={err}>{err}</p>
-        ))}
           <div className="text-gray-900 font-bold text-xl mb-2">{review.title}</div>
           <p className="text-gray-700 text-base">{review.description}</p>
         </div>

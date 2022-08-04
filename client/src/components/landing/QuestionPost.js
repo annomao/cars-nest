@@ -5,30 +5,19 @@ import Comment from './Comment'
 
 function QuestionPost() {
   const [question, setQuestion] = useState({})
-  const [errors, setErrors] = useState([])
   let params = useParams()
   let id = parseInt(params.id)
 
   useEffect(()=>{
     fetch(`https://cars-nest.herokuapp.com/api/v1/questions/${id}`)
-    .then(res => {
-      if(res.ok){
-        res.json()
-        .then(data => setQuestion(data))
-      }
-      else{
-        res.json().then((err) => setErrors(err.errors));
-      }
-      })
-  },[params.id])
+    .then(res => res.json())
+    .then(data => setQuestion(data))
+  },[id])
 
   return (
     <>
     <div className="">
       <div className="px-6 py-4">
-        {errors.map((err) => (
-          <p  className="text-red-600 font-bold text-2xl mb-4" key={err}>{err}</p>
-        ))}
         <p className="text-gray-700 text-xl font-bold">
           {question.description}
         </p>

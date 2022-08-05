@@ -4,6 +4,7 @@ import LandingTemp from './LandingTemp'
 
 function Review() {
   const[reviews,setReviews] = useState([])
+  const [search, setSearch] = useState("")
 
   useEffect(()=>{
     fetch("https://cars-nest.herokuapp.com/api/v1/reviews")
@@ -11,16 +12,20 @@ function Review() {
     .then(data => setReviews(data))
   },[])
 
-  const holder = "Search by tag...."
+  const holder = "Search...."
   const text = "Post a review"
 
-  const displayedReviews = reviews.map(review =>{
+  const searchReviews = reviews.filter((review)=>{
+    return review.description.toLowerCase().includes(search.toLowerCase())
+  })
+
+  const displayedReviews = searchReviews.map(review =>{
     return <DisplayCard key={review.id} post={review}/>
   })
   return (
     <>
-    <LandingTemp holder={holder} text={text} linkTo="/add_review"/>
-    <div className="min-h-screen items-center flex justify-center">
+    <LandingTemp holder={holder} text={text} linkTo="/add_review"  setSearch={setSearch}/>
+    <div className="flex justify-center">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-5"> 
          {displayedReviews}
       </div>

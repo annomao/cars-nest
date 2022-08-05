@@ -10,7 +10,13 @@ function LandingTemp(props) {
         <div className="flex flex-col mb-6">
           <div className="relative">
             <div className="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"><span><FaSearch/></span></div>
-            <input id="search" type="text" name="search" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 border border-cBlue bg-neutral-100 py-2 focus:outline-none focus:border-blue-400" placeholder={props.holder} />
+            <input 
+            onChange={(e)=>props.setSearch(e.target.value)}
+            id="search" 
+            type="text" 
+            name="search" 
+            className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 border border-cBlue bg-neutral-100 py-2 focus:outline-none focus:border-blue-400" 
+            placeholder={props.holder} />
           </div>
         </div>
       </div>

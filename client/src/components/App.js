@@ -25,7 +25,7 @@ function App() {
         res.json()
         .then((user) => {
           setAuth(user)
-          navigate("/")
+          navigate("/question")
         });
       }else{
         setAuth(null)

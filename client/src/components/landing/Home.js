@@ -26,6 +26,7 @@ function Home() {
   return (
     <>
     <LandingTemp holder={holder} text={text} linkTo="/add_question" setSearch={setSearch}/>
+      <h1 className="font-bold text-5xl text-center text-cBlue mb-4">Questions</h1>
     <div className="flex justify-center">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-2"> 
          {displayedQuestions}

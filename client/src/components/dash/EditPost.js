@@ -1,7 +1,9 @@
 
 import React, {useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function EditPost({post,isEditing,setIsEditing,url,onEdit}) {
+  const navigate = useNavigate()
   const [title, setTitle] = useState(post.title);
   const [description, setDescription] = useState(post.description);
 
@@ -23,6 +25,7 @@ function EditPost({post,isEditing,setIsEditing,url,onEdit}) {
     .then((data)=>{
       onEdit(data)
       setIsEditing(() => isEditing = !isEditing)
+      navigate("/questions")
     })
   }
 

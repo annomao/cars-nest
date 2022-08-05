@@ -27,6 +27,7 @@ function UserQuestions() {
 
   return (
     <div className="container mx-auto my-5 p-5">
+      <h1 className="font-bold text-5xl text-center text-cBlue mb-4">Questions</h1>
       <div className="md:flex no-wrap md:-mx-2 ">
       <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
       {user &&  user.questions.map(question =>{

@@ -17,7 +17,7 @@ Click Link on live site section
 * Fork the repo
 * Clone the repo
 * Open the project with your favorite code editor
-* Run `bundle install` to be able to view project in your browser
+* Run `bundle install` to be able to install project dependencies
 * Run `npm install --prefix client` in your terminal to install project dependencies
 * Run `npm start --prefix client` to be able to view project in your browser
 

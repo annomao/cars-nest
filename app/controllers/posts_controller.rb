@@ -3,6 +3,6 @@ class PostsController < ApplicationController
 
   def index
     user = find_user
-    render json: user, status: :ok 
+    render json: user, serializer: PostSerializer, status: :ok 
   end
 end

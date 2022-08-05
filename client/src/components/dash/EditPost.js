@@ -10,12 +10,13 @@ function EditPost({post,isEditing,setIsEditing,url,onEdit}) {
 
     fetch(url,{
       method: "PATCH",
-      headers:{
-        "Content-Type": "application/json"
+      headers: {
+        "Content-Type": "application/json",
       },
-      body:JSON.stringify({
-        title:title,
-        description:description
+      body: JSON.stringify({
+
+        title: title,
+        description: description
       })
     })
     .then(res => res.json())

@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react'
 import PostCard from './PostCard'
 
 function UserReviews() {
-  const [user,setUser] = useState(null)
+  const [user,setUser] = useState({})
 
   useEffect(()=>{
     fetch("https://cars-nest.herokuapp.com/api/v1/user/posts")
     .then(res => res.json())
     .then(data => setUser(data))
   })
+
+  console.log(user)
 
   const displayedReviews = user.reviews.map(review =>{
     return <PostCard post={review}/>

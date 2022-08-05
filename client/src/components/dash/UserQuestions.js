@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import PostCard from './PostCard'
 
 function UserQuestions() {
-  const [user,setUser] = useState(null)
+  const [user,setUser] = useState({})
 
   useEffect(()=>{
     fetch("https://cars-nest.herokuapp.com/api/v1/user/posts")

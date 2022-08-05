@@ -6,6 +6,12 @@ function PostCard({post, url, onEdit}) {
 
   const [isEditing, setIsEditing] = useState(false)
 
+  function handleDelete(){
+    fetch(url,{
+      method:"DELETE"
+    })
+    }
+
   return (
     <>
     <div className="rounded overflow-hidden shadow-lg">
@@ -28,7 +34,7 @@ function PostCard({post, url, onEdit}) {
         <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
         <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-2xl font-bold text-gray-900 mr-2 mb-2"><MdOutlineEditNote/></span>
         </button>
-        <button>
+        <button onClick={handleDelete}>
         <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-2xl font-bold text-gray-900 mr-2 mb-2"><MdDeleteOutline/></span>
         </button>
       </div>

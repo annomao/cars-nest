@@ -1,15 +1,18 @@
 import React, {useState} from 'react'
 import { MdDeleteOutline, MdOutlineEditNote } from "react-icons/md"
+import { useNavigate } from 'react-router-dom'
 import EditPost from './EditPost'
 
 function PostCard({post, url, onEdit}) {
 
   const [isEditing, setIsEditing] = useState(false)
+  const navigate = useNavigate()
 
   function handleDelete(){
     fetch(url,{
       method:"DELETE"
     })
+    navigate("/questions")
     }
 
   return (

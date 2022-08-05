@@ -56,10 +56,10 @@ function LoggedNav() {
                 className="inline-block w-full px-4 py-2 text-center text-white bg-cBlue rounded-md shadow hover:bg-gray-800">
                 {auth.username} </span>
                 <NavLink to='/myquestions'
-                className="inline-block w-full px-4 py-2 text-center text-white bg-cBlue rounded-md shadow hover:bg-gray-800">
+                className="inline-block w-full text-cBlue hover:text-gray-800">
                 My Questions </NavLink>
                 <NavLink to='/myreviews'
-                className="inline-block w-full px-4 py-2 text-center text-white bg-cBlue rounded-md shadow hover:bg-gray-800">
+                className="inline-block w-full text-cBlue hover:text-gray-800">
                 My Reviews </NavLink>
               <button 
                 className="inline-block w-full px-4 py-2 text-center text-cBlue bg-white rounded-md shadow hover:text-gray-800">
@@ -71,9 +71,9 @@ function LoggedNav() {
           <span
             className="px-4 py-2 text-white bg-cBlue rounded-md shadow hover:bg-gray-800">{auth.username}</span>
             <NavLink to='/myquestions'
-            className="px-4 py-2 text-white bg-cBlue rounded-md shadow hover:bg-gray-800">My Questions</NavLink>
+            className="px-4 py-2 text-cBlue hover:text-gray-800">My Questions</NavLink>
             <NavLink to='/myreviews'
-            className="px-4 py-2 text-white bg-cBlue rounded-md shadow hover:bg-gray-800">My Reviews</NavLink>
+            className="px-4 py-2 text-cBlue hover:text-gray-800">My Reviews</NavLink>
           <button onClick={handleLogout}
             className="px-4 py-2 text-cBlue bg-white rounded-md shadow hover:text-gray-800">Log Out</button>
         </div>

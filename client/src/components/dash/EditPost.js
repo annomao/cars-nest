@@ -46,7 +46,7 @@ function EditPost({post,isEditing,setIsEditing,url,onEdit}) {
         rows={5}
       />
       <div className="flex items-baseline justify-between">
-        <button className="px-4 py-2 mt-4 mb-4 text-white bg-cBlue rounded-lg hover:bg-base">Edit</button>             
+        <button type="submit" className="px-4 py-2 mt-4 mb-4 text-white bg-cBlue rounded-lg hover:bg-base">Edit</button>             
       </div>
     </form>
     </div>

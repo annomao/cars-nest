@@ -10,8 +10,8 @@ function EditPost({post,isEditing,setIsEditing,url,onEdit}) {
 
     fetch(url,{
       method: "PATCH",
-      header:{
-        "Content-type":"application/json"
+      headers:{
+        "Content-Type": "application/json"
       },
       body:JSON.stringify({
         title:title,

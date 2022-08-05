@@ -3,6 +3,8 @@ import { Routes,Route, useNavigate } from 'react-router-dom'
 import useUser from '../hooks/useUser';
 import Login from './auth/Login';
 import Signup from './auth/Signup';
+import UserQuestions from './dash/UserQuestions';
+import UserReviews from './dash/UserReviews';
 import Home from './landing/Home';
 import QuestionForm from './landing/QuestionForm';
 import Review from './landing/Review';
@@ -43,6 +45,8 @@ function App() {
         <Route element={ <PrivateRoutes/> }>
           <Route path="/add_question" element={<QuestionForm/>}/>
           <Route path="/add_review" element={<ReviewForm/>}/>
+          <Route path="/myquestions" element={<UserQuestions/>}/>
+          <Route path="/myreviews" element={<UserReviews/>}/>
         </Route>
       </Routes>
     </>

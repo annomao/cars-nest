@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :quecomments, only: [:create, :update, :destroy]
       resources :revcomments, only: [:create, :update, :destroy]
       get '/me', to: 'users#show' 
+      get 'user/posts', to: 'posts#index'
       post '/auth/login', to: 'sessions#create'
       delete '/auth/logout', to: 'sessions#destroy'
     end

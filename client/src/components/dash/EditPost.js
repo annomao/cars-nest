@@ -1,7 +1,7 @@
 
 import React, {useState} from 'react'
 
-function EditPost({post,isEditing,setIsEditing,url}) {
+function EditPost({post,isEditing,setIsEditing,url,onEdit}) {
   const [title, setTitle] = useState(post.title);
   const [description, setDescription] = useState(post.description);
 
@@ -19,7 +19,8 @@ function EditPost({post,isEditing,setIsEditing,url}) {
       })
     })
     .then(res => res.json())
-    .then(()=>{
+    .then((data)=>{
+      onEdit(data)
       setIsEditing(() => isEditing = !isEditing)
     })
   }

@@ -20,7 +20,7 @@ class QuestionsController < ApplicationController
     def update
       question = find_question
       question.update!(allowed_params)
-      render json: question, status: :created
+      render json: question, serializer: EditpostSerializer, status: :created
   
     end
   

@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { MdDeleteOutline, MdOutlineEditNote } from "react-icons/md"
 import EditPost from './EditPost'
 
-function PostCard({post, url}) {
+function PostCard({post, url, onEdit}) {
 
   const [isEditing, setIsEditing] = useState(false)
 
@@ -14,7 +14,7 @@ function PostCard({post, url}) {
         <div className="font-normal text-xl mb-2">
           </div>
         {
-          isEditing ? <EditPost post={post} isEditing={isEditing} setIsEditing={setIsEditing} url={url}/> :
+          isEditing ? <EditPost post={post} isEditing={isEditing} setIsEditing={setIsEditing} url={url} onEdit={onEdit}/> :
           <>          
           <div className="font-normal text-xl mb-2">{post.title}</div>
           <p className="text-gray-700 text-base">

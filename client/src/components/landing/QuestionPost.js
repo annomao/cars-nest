@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import useUser from '../../hooks/useUser'
 import Comment from './Comment'
+import CommentForm from './CommentForm'
 
 function QuestionPost() {
   const [question,setQuestion] = useState(null)
+  const [comment, setComment] = useState("")
   const { id } = useParams()
+  const { auth } = useUser()
 
   const fetchQuestions = async (QId) => {
     const res = await fetch(`https://cars-nest.herokuapp.com/api/v1/questions/${QId}`)
@@ -13,6 +17,39 @@ function QuestionPost() {
   }
 
   useEffect(()=>{ fetchQuestions(id) },[])
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    fetch("https://cars-nest.herokuapp.com/api/v1/quecomments",{
+      method: "POST",
+      headers : {
+        "Content-Type" : "application/json"
+      },
+      body: JSON.stringify({
+        description: comment,
+        upvotes: 0,
+        downvotes: 0,
+        question_id : id
+      })
+    })
+    .then(res => res.json())
+    .then(data => onAddComment(data))
+  }
+
+  const handleChange = (event)=>{
+    setComment(event.target.value)
+  }
+
+  const onAddComment = (updatedComment)=>{
+    const updatedQuestion = {
+      ...question,
+      quecomments : [
+        ...question.quecomments,
+        updatedComment
+      ]
+    }
+    setQuestion(updatedQuestion)
+  }
 
 
   return (
@@ -38,6 +75,8 @@ function QuestionPost() {
     {question && question.quecomments.map((comment)=>{
       return <Comment key={comment.id} comment={comment}/>
     })}</div>
+    <div>{auth ? <CommentForm handleChange={handleChange} handleSubmit={handleSubmit} /> : null }</div>
+    
     </>
   )
 }

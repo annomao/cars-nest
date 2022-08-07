@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { FaThumbsDown,FaThumbsUp } from 'react-icons/fa'
 import { useParams } from 'react-router-dom'
+import useUser from '../../hooks/useUser'
 import Comment from './Comment'
+import CommentForm from './CommentForm'
 
 function ReviewPost() {
   const [review,setReview] = useState(null)
+  const [comment,setComment] = useState("")
   const { id } = useParams()
+  const { auth } = useUser()
 
   const fetchReviews = async (RId) => {
     const res = await fetch(`https://cars-nest.herokuapp.com/api/v1/reviews/${RId}`)
@@ -14,6 +18,39 @@ function ReviewPost() {
   }
 
   useEffect(()=>{  fetchReviews(id) },[])
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    fetch("https://cars-nest.herokuapp.com/api/v1/revcomments",{
+      method: "POST",
+      headers : {
+        "Content-Type" : "application/json"
+      },
+      body: JSON.stringify({
+        description: comment,
+        upvotes: 0,
+        downvotes: 0,
+        review_id: id
+      })
+    })
+    .then(res => res.json())
+    .then(data => onAddComment(data))
+  }
+
+  const handleChange = (event) =>{
+    setComment(event.target.value)
+  }
+
+  const onAddComment = (updatedComment)=>{
+    const updatedReview = {
+      ...review,
+      revcomments : [
+        ...review.revcomments,
+        updatedComment
+      ]
+    }
+    setReview(updatedReview)
+  }
 
   return (
     <>
@@ -42,6 +79,7 @@ function ReviewPost() {
     {review && review.revcomments.map((comment)=>{
       return <Comment key={comment.id} comment={comment}/>
     })}</div>
+    <div>{auth ? <CommentForm handleChange={handleChange} handleSubmit={handleSubmit}/> : null }</div>
     </>
   )
 }

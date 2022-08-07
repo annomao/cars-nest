@@ -14,7 +14,7 @@ function PostBaseForm(props) {
           </label>
           <input type="file" accept="image/*"
             name="image" 
-            className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-2 border-b border-cBlue bg-grey-100 w-full py-2 focus:outline-none focus:border-blue-400" 
+            className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-2 bg-grey-100 w-full py-2 focus:outline-none focus:border-blue-400" 
             onChange={props.handleUpload}
             />
             <button onClick={props.handleImgUpload} 

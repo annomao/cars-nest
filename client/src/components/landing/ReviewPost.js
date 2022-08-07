@@ -39,12 +39,12 @@ function ReviewPost() {
       if (res.ok) {
         res.json().then(data => {
           onAddComment(data)
-          setComment("")
         })
         }else{
           res.json().then((err) => setErrors(err.errors));
         }
       })
+    setComment("")
   }
 
   const handleChange = (event) =>{
@@ -62,7 +62,7 @@ function ReviewPost() {
     setReview(updatedReview)
   }
 
-  const onVote = (updatedComment) => {
+  const onVoteComment = (updatedComment) => {
     const commentList = review.revcomments.map((r)=>{
       if(r.id === updatedComment.id){
         return updatedComment
@@ -103,7 +103,7 @@ function ReviewPost() {
     <div className="font-medium self-center text-xl sm:text-2xl uppercase text-cBlue px-6 py-4">comments</div>
     <div className="max-w-sm w-full lg:max-w-full lg:flex p-2 mt-2">
     {review && review.revcomments.map((comment)=>{
-      return <Comment key={comment.id} comment={comment} onVote={onVote} url="https://cars-nest.herokuapp.com/api/v1/revcomments"/>
+      return <Comment key={comment.id} comment={comment} onCommentVote={onVoteComment} url={`https://cars-nest.herokuapp.com/api/v1/revcomments`}/>
     })}</div>
     <div>{auth ? <CommentForm handleChange={handleChange} handleSubmit={handleSubmit} errors={errors}/> : null }</div>
     </>

@@ -1,13 +1,13 @@
 class RevcommentsController < ApplicationController
   def create
     comment = Revcomment.create!(allowed_params)
-    render json: comment, status: :created
+    render json: comment, serializer:RevcommentSerializer, status: :created
   end
 
   def update
     comment = find_comment
     comment.update!(allowed_params)
-    render json: comment, status: :created
+    render json: comment, serializer:RevcommentSerializer, status: :created
   end
 
 

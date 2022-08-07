@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaThumbsDown,FaThumbsUp } from 'react-icons/fa'
 
-function Comment({comment, url, onVote}) {
+function Comment({comment, url, onCommentVote}) {
 
   const handleDownvote = () =>{
     fetch(`${url}/${comment.id}`,{
@@ -14,7 +14,7 @@ function Comment({comment, url, onVote}) {
       })
     })
     .then(res => res.json())
-    .then(data => onVote(data))
+    .then(data => onCommentVote(data))
   }
 
   const handleUpvote = () =>{
@@ -28,7 +28,7 @@ function Comment({comment, url, onVote}) {
       })
     })
     .then(res => res.json())
-    .then(data => onVote(data))
+    .then(data => onCommentVote(data))
   }
 
   return (
@@ -38,7 +38,6 @@ function Comment({comment, url, onVote}) {
         <p className="text-gray-700 text-base">
           {comment.description}
         </p>
-        <div className="text-base mb-2">{comment.user.username}</div>
       </div>
       <div className="px-6 pt-4 pb-2">
         <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" onClick={handleUpvote}>

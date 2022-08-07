@@ -14,11 +14,11 @@ function PostBaseForm(props) {
           </label>
           <input type="file" accept="image/*"
             name="image" 
-            className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 border-b border-cBlue bg-neutral-100 w-full py-2 focus:outline-none focus:border-blue-400" 
+            className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-2 border-b border-cBlue bg-grey-100 w-full py-2 focus:outline-none focus:border-blue-400" 
             onChange={props.handleUpload}
             />
             <button onClick={props.handleImgUpload} 
-            className="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base w-9/12 bg-cBlue hover:bg-grey-800 py-2 mt-2 transition duration-150 ease-in">
+            className="flex justify-center focus:outline-none text-white text-sm sm:text-base w-1/2 bg-cGreen py-2 mt-2">
               Upload Image
            </button>
 
@@ -39,7 +39,7 @@ function PostBaseForm(props) {
             id="title" 
             type="text" 
             name="title" 
-            className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 border-b border-cBlue bg-neutral-100 w-full py-2 focus:outline-none focus:border-blue-400" 
+            className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-2 border-b border-cBlue bg-grey-100 w-full py-2 focus:outline-none focus:border-blue-400" 
             placeholder="Enter title..." 
             onChange={props.handleChange}
             />
@@ -51,7 +51,7 @@ function PostBaseForm(props) {
           <textarea cols="50" rows="5"
             id="description" 
             name="description" 
-            className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 border-b border-cBlue bg-neutral-100 w-full py-2 focus:outline-none focus:border-blue-400" 
+            className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-2 border-b border-cBlue bg-grey-100 w-full py-2 focus:outline-none focus:border-blue-400" 
             placeholder="Enter Description" 
             onChange={props.handleChange}
             ></textarea>
@@ -64,7 +64,7 @@ function PostBaseForm(props) {
             id="categories" 
             type="text" 
             name="categories" 
-            className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 border-b border-cBlue bg-neutral-100 w-full py-2 focus:outline-none focus:border-blue-400" 
+            className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-2 border-b border-cBlue bg-grey-100 w-full py-2 focus:outline-none focus:border-blue-400" 
             placeholder="Enter categories"
             onChange={props.handleChange}
             />

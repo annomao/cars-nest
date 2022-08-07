@@ -18,7 +18,7 @@ function PostBaseForm(props) {
             onChange={props.handleUpload}
             />
             <button onClick={props.handleImgUpload} 
-            className="flex justify-center focus:outline-none text-white text-sm sm:text-base w-1/2 bg-cGreen py-2 mt-2">
+            className="m-auto focus:outline-none text-white text-sm sm:text-base w-1/2 bg-cGreen py-2 mt-2">
               Upload Image
            </button>
 

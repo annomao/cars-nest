@@ -23,9 +23,8 @@ function EditPost({post,isEditing,setIsEditing,url,onEdit}) {
     })
     .then(res => res.json())
     .then((data)=>{
-      console.log(data)
+      onEdit(data)
       setIsEditing(() => isEditing = !isEditing)
-      navigate("/questions")
     })
   }
 

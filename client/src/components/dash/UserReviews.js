@@ -22,7 +22,11 @@ function UserReviews() {
         return review
       }
     })
-    setUser(newData)
+    const newUser = {
+      ...user,
+      reviews: newData 
+    }
+    setUser(newUser)
   }
 
 

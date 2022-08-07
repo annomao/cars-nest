@@ -11,7 +11,7 @@ function UserQuestions() {
   },[])
 
   function handleEdit(editedData){
-    const newData = user.questions.map(question =>{
+    const newQuestionsList = user.questions.map(question =>{
       if(question.id === editedData.id){
         return {
           ...question,
@@ -22,7 +22,11 @@ function UserQuestions() {
         return question
       }
     })
-    setUser(newData)
+    const newUser = {
+      ...user,
+      questions: newQuestionsList
+    }
+    setUser(newUser)
   }
 
   return (

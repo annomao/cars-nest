@@ -38,12 +38,12 @@ function QuestionPost() {
       if(res.ok){
         res.json().then(data => {
           onAddComment(data)
+          setComment("")
         })
       }else{
         res.json().then((err) => setErrors(err.errors));
       }
     })
-    setComment("")
   }
 
   const handleChange = (event)=>{

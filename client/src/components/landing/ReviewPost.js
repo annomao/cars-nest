@@ -39,16 +39,58 @@ function ReviewPost() {
       if (res.ok) {
         res.json().then(data => {
           onAddComment(data)
+          setComment("")
         })
         }else{
           res.json().then((err) => setErrors(err.errors));
         }
       })
-    setComment("")
   }
 
   const handleChange = (event) =>{
     setComment(event.target.value)
+  }
+
+  const onUpvote = () => {
+    fetch(`https://cars-nest.herokuapp.com/api/v1/reviews/${review.id}`,{
+      method:"PATCH",
+      headers:{
+        "Content-Type" : "application/json"
+      },
+      body:JSON.stringify({
+        upvotes: parseInt(review.upvotes) + 1
+      })
+    })
+    .then(res => res.json())
+    .then(data => handleOnUpvote(data))
+  }
+
+  const handleOnUpvote = (updated) =>{
+    setReview({
+      ...review,
+      upvotes: updated.upvotes
+    })
+  }
+
+  const onDownvote = () => {
+    fetch(`https://cars-nest.herokuapp.com/api/v1/reviews/${review.id}`,{
+      method:"PATCH",
+      headers:{
+        "Content-Type" : "application/json"
+      },
+      body:JSON.stringify({
+        downvotes: parseInt(review.downvotes) + 1
+      })
+    })
+    .then(res => res.json())
+    .then(data => handleOnDownvote(data))
+  }
+
+  const handleOnDownvote = (updated) => {
+    setReview({
+      ...review,
+      downvotes: updated.downvotes
+    })
   }
 
   const onAddComment = (updatedComment)=>{
@@ -93,8 +135,10 @@ function ReviewPost() {
           <div className="text-sm">
             <p className="text-cGreen leading-none">{review && review.user.username}</p>
             <div className="pt-4 pb-2">
-              <span className="inline-block bg-gray-200 text-cGreen rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><FaThumbsUp className="inline mr-2"/>{review && review.upvotes}</span>
-              <span className="inline-block bg-gray-200 text-cGreen rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><FaThumbsDown className="inline mr-2"/>{review && review.downvotes}</span>
+              <button className="inline-block bg-gray-200 text-cGreen rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" onClick={onUpvote}>
+                <FaThumbsUp className="inline mr-2"/>{review && review.upvotes}</button>
+              <button className="inline-block bg-gray-200 text-cGreen rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" onClick={onDownvote}>
+                <FaThumbsDown className="inline mr-2"/>{review && review.downvotes}</button>
             </div>
           </div>
         </div>

@@ -17,11 +17,11 @@ function ReviewPost() {
 
   return (
     <>
-    <div className="max-w-sm w-full lg:max-w-full lg:flex">
+    <div className="max-w-sm w-full lg:max-w-full lg:flex p-2 mt-2">
       <div className="h-56 lg:h-auto lg:w-60 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
       <img className="w-full" src={review && review.image} alt="car"/>
       </div>
-      <div className="border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+      <div className="bg-white p-4 flex flex-col justify-between leading-normal">
         <div className="mb-8">
           <div className="text-gray-900 font-bold text-xl mb-2">{review && review.title}</div>
           <p className="text-gray-700 text-base">{review && review.description}</p>
@@ -38,9 +38,10 @@ function ReviewPost() {
       </div>
     </div>
     <div className="font-medium self-center text-xl sm:text-2xl uppercase text-cBlue px-6 py-4">comments</div>
+    <div className="max-w-sm w-full lg:max-w-full lg:flex p-2 mt-2">
     {review && review.revcomments.map((comment)=>{
       return <Comment key={comment.id} comment={comment}/>
-    })}
+    })}</div>
     </>
   )
 }

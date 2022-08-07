@@ -1,7 +1,7 @@
 class QuecommentsController < ApplicationController
   def create
     comment = Quecomment.create!(allowed_params)
-    render json: comment, serializer:QuecommentSerializer, status: :created,
+    render json: comment, serializer:QuecommentSerializer, status: :created
   end
 
   def update

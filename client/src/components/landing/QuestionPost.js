@@ -97,7 +97,7 @@ function QuestionPost() {
       </div>
     </div>
     <div className="font-medium self-center text-xl sm:text-2xl uppercase text-cBlue px-6 py-4">comments</div>
-    <div className="max-w-sm w-full lg:max-w-full lg:flex p-2 mt-2">
+    <div className="p-2 mt-2">
     {question && question.quecomments.map((comment)=>{
       return <Comment key={comment.id} comment={comment} onCommentVote={onVoteComment} url="https://cars-nest.herokuapp.com/api/v1/quecomments"/>
     })}</div>

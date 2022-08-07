@@ -40,9 +40,9 @@ function Comment({comment, url, onCommentVote}) {
         </p>
       </div>
       <div className="px-6 pt-4 pb-2">
-        <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" onClick={handleUpvote}>
+        <button className="inline-block bg-gray-200 text-cGreen rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" onClick={handleUpvote}>
           <FaThumbsUp className="inline mr-2"/> {comment.upvotes}</button>
-        <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" onClick={handleDownvote}>
+        <button className="inline-block bg-gray-200 text-cGreen rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" onClick={handleDownvote}>
           <FaThumbsDown className="inline mr-2"/> {comment.downvotes}</button>
       </div>
     </div>

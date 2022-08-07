@@ -1,7 +1,6 @@
 class RevcommentsController < ApplicationController
   def create
-    user = find_user
-    comment = user.revcomments.create!(allowed_params)
+    comment = Revcomment.create!(allowed_params)
     render json: comment, status: :created
   end
 
@@ -19,7 +18,7 @@ class RevcommentsController < ApplicationController
   end
 
   def allowed_params
-    params.permit(:description, :upvotes, :downvotes, :review_id)
+    params.permit(:description, :upvotes, :downvotes, :review_id, :user_id)
   end
 
 end

@@ -6,6 +6,7 @@ import CommentForm from './CommentForm'
 
 function QuestionPost() {
   const [question,setQuestion] = useState(null)
+  const [errors,setErrors] = useState([])
   const [comment, setComment] = useState("")
   const { id } = useParams()
   const { auth } = useUser()
@@ -29,11 +30,17 @@ function QuestionPost() {
         description: comment,
         upvotes: 0,
         downvotes: 0,
-        question_id : id
+        question_id : id,
+        user_id: auth.id
       })
     })
-    .then(res => res.json())
-    .then(data => onAddComment(data))
+    .then(res => {
+      if(res.ok){
+        res.json().then(data => onAddComment(data))
+      }else{
+        res.json().then((err) => setErrors(err.errors));
+      }
+    })
   }
 
   const handleChange = (event)=>{

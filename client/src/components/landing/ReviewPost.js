@@ -8,6 +8,7 @@ import CommentForm from './CommentForm'
 function ReviewPost() {
   const [review,setReview] = useState(null)
   const [comment,setComment] = useState("")
+  const [errors, setErrors] = useState([])
   const { id } = useParams()
   const { auth } = useUser()
 
@@ -30,11 +31,17 @@ function ReviewPost() {
         description: comment,
         upvotes: 0,
         downvotes: 0,
-        review_id: id
+        review_id: id,
+        user_id: auth.id
       })
     })
-    .then(res => res.json())
-    .then(data => onAddComment(data))
+    .then(res => {
+      if (res.ok) {
+        res.json().then(data => onAddComment(data))
+        }else{
+          res.json().then((err) => setErrors(err.errors));
+        }
+      })
   }
 
   const handleChange = (event) =>{
@@ -79,7 +86,7 @@ function ReviewPost() {
     {review && review.revcomments.map((comment)=>{
       return <Comment key={comment.id} comment={comment}/>
     })}</div>
-    <div>{auth ? <CommentForm handleChange={handleChange} handleSubmit={handleSubmit}/> : null }</div>
+    <div>{auth ? <CommentForm handleChange={handleChange} handleSubmit={handleSubmit} errors={errors}/> : null }</div>
     </>
   )
 }

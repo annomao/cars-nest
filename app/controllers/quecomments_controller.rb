@@ -1,7 +1,6 @@
 class QuecommentsController < ApplicationController
   def create
-    user = find_user
-    comment = user.quecomments.create!(allowed_params)
+    comment = Quecomment.create!(allowed_params)
     render json: comment, status: :created
   end
 
@@ -19,7 +18,7 @@ class QuecommentsController < ApplicationController
   end
 
   def allowed_params
-    params.permit(:description, :upvotes, :downvotes, :question_id)
+    params.permit(:description, :upvotes, :downvotes, :question_id, :user_id)
   end
 
 end

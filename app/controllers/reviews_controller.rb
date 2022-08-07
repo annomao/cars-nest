@@ -20,7 +20,7 @@ class ReviewsController < ApplicationController
   def update
     review = find_review
     review.update!(allowed_params)
-    render json: review, serializer: EditpostSerializer, status: :created
+    render json: review, serializer: EditreviewSerializer, status: :created
 
   end
 

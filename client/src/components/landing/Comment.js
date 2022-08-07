@@ -10,7 +10,7 @@ function Comment({comment, url, onCommentVote}) {
         "Content-Type" : "application/json"
       },
       body: JSON.stringify({
-        downvotes : parseInt(comment.downvotes) - 1
+        downvotes : parseInt(comment.downvotes) + 1
       })
     })
     .then(res => res.json())
@@ -24,7 +24,7 @@ function Comment({comment, url, onCommentVote}) {
         "Content-Type" : "application/json"
       },
       body: JSON.stringify({
-        downvotes : parseInt(comment.upvotes) + 1
+        upvotes : parseInt(comment.upvotes) + 1
       })
     })
     .then(res => res.json())

@@ -36,7 +36,10 @@ function QuestionPost() {
     })
     .then(res => {
       if(res.ok){
-        res.json().then(data => onAddComment(data))
+        res.json().then(data => {
+          onAddComment(data)
+          setComment("")
+        })
       }else{
         res.json().then((err) => setErrors(err.errors));
       }
@@ -55,6 +58,22 @@ function QuestionPost() {
         updatedComment
       ]
     }
+    setQuestion(updatedQuestion)
+  }
+
+  const onVote = (updatedComment) => {
+    const commentList = question.quecomments.map((q)=>{
+      if(q.id === updatedComment.id){
+        return updatedComment
+      }else{
+        return q
+      }
+    })
+    const updatedQuestion = {
+      ...question,
+      quecomments: commentList
+    }
+
     setQuestion(updatedQuestion)
   }
 
@@ -80,9 +99,9 @@ function QuestionPost() {
     <div className="font-medium self-center text-xl sm:text-2xl uppercase text-cBlue px-6 py-4">comments</div>
     <div className="max-w-sm w-full lg:max-w-full lg:flex p-2 mt-2">
     {question && question.quecomments.map((comment)=>{
-      return <Comment key={comment.id} comment={comment}/>
+      return <Comment key={comment.id} comment={comment} onVote={onVote}/>
     })}</div>
-    <div>{auth ? <CommentForm handleChange={handleChange} handleSubmit={handleSubmit} /> : null }</div>
+    <div>{auth ? <CommentForm handleChange={handleChange} handleSubmit={handleSubmit} errors={errors}/> : null }</div>
     
     </>
   )

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function CommentForm({handleChange,handleSubmit,errors}) {
+function CommentForm({handleChange,handleSubmit}) {
 
   return (
     <div className="w-full max-w-lg">
@@ -22,9 +22,6 @@ function CommentForm({handleChange,handleSubmit,errors}) {
           </button>
         </div>
     </form>
-    {errors.map((err) => (
-          <p  className="text-red-600 text-base" key={err}>{err}</p>
-        ))}
     </div>
   )
 }

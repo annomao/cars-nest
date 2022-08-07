@@ -1,7 +1,36 @@
 import React from 'react'
 import { FaThumbsDown,FaThumbsUp } from 'react-icons/fa'
 
-function Comment({comment}) {
+function Comment({comment, url, onVote}) {
+
+  const handleDownvote = () =>{
+    fetch(`${url}/${comment.id}`,{
+      method: "PATCH",
+      headers: {
+        "Content-Type" : "application/json"
+      },
+      body: JSON.stringify({
+        downvotes : parseInt(comment.downvotes) - 1
+      })
+    })
+    .then(res => res.json())
+    .then(data => onVote(data))
+  }
+
+  const handleUpvote = () =>{
+    fetch(`${url}/${comment.id}`,{
+      method: "PATCH",
+      headers: {
+        "Content-Type" : "application/json"
+      },
+      body: JSON.stringify({
+        downvotes : parseInt(comment.upvotes) + 1
+      })
+    })
+    .then(res => res.json())
+    .then(data => onVote(data))
+  }
+
   return (
     <>
     <div className="border-b border-cBlue overflow-hidden">
@@ -12,8 +41,10 @@ function Comment({comment}) {
         <div className="text-base mb-2">{comment.user.username}</div>
       </div>
       <div className="px-6 pt-4 pb-2">
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><FaThumbsUp/> {comment.upvotes}</span>
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><FaThumbsDown/> {comment.downvotes}</span>
+        <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" onClick={handleUpvote}>
+          <FaThumbsUp className="inline mr-2"/> {comment.upvotes}</button>
+        <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" onClick={handleDownvote}>
+          <FaThumbsDown className="inline mr-2"/> {comment.downvotes}</button>
       </div>
     </div>
     </>

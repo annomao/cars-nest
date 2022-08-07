@@ -76,7 +76,6 @@ function QuestionPost() {
 
     setQuestion(updatedQuestion)
   }
-  console.log(question)
 
 
   return (

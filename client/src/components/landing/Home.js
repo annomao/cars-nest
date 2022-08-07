@@ -20,7 +20,7 @@ function Home() {
   })
 
   const displayedQuestions = searchQuestions.map(question =>{
-    return <DisplayCard key={question.id} post={question}/>
+    return <DisplayCard key={question.id} post={question} linkTo={`/question/${question.id}`}/>
   })
 
   return (

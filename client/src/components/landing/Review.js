@@ -20,7 +20,7 @@ function Review() {
   })
 
   const displayedReviews = searchReviews.map(review =>{
-    return <DisplayCard key={review.id} post={review}/>
+    return <DisplayCard key={review.id} post={review} linkTo={`/review/${review.id}`}/>
   })
   return (
     <>

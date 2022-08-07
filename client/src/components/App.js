@@ -7,8 +7,10 @@ import UserQuestions from './dash/UserQuestions';
 import UserReviews from './dash/UserReviews';
 import Home from './landing/Home';
 import QuestionForm from './landing/QuestionForm';
+import QuestionPost from './landing/QuestionPost';
 import Review from './landing/Review';
 import ReviewForm from './landing/ReviewForm';
+import ReviewPost from './landing/ReviewPost';
 import LoggedNav from './LoggedNav';
 import Navbar from './Navbar';
 import PrivateRoutes from './PrivateRoute';
@@ -40,6 +42,8 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/question' element={<Home/>}/>
         <Route path='/review' element={<Review/>}/>
+        <Route path='/review/:id' element={<ReviewPost/>}/>
+        <Route path='/question/:id' element={<QuestionPost/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route element={ <PrivateRoutes/> }>

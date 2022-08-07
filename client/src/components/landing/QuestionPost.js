@@ -1,30 +1,37 @@
-import React from 'react'
-import { FaThumbsDown,FaThumbsUp } from 'react-icons/fa'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import Comment from './Comment'
 
-function QuestionPost({question}) {
+function QuestionPost() {
+  const [question,setQuestion] = useState(null)
+  const { id } = useParams()
+
+  const fetchQuestions = async (QId) => {
+    const res = await fetch(`https://cars-nest.herokuapp.com/api/v1/questions/${QId}`)
+    const data = await res.json()
+    setQuestion(data)
+  }
+
+  useEffect(()=>{ fetchQuestions(id) },[])
+
 
   return (
     <>
     <div className="">
       <div className="px-6 py-4">
         <p className="text-gray-700 text-xl font-bold">
-          {question.description}
+          {question && question.description}
         </p>
-        <div className="text-base mb-2">{question.user.username}</div>
+        <div className="text-base mb-2">{question && question.user.username}</div>
       <div className="pt-4 pb-2">
-      {question.categories.split(",").map((category)=>{
-          return <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{category}</span>
+      {question && question.categories.split(",").map((category)=>{
+          return <span key={category} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{category}</span>
         })}
       </div>
       </div>
-      <div className="px-6 pt-4 pb-2">
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><FaThumbsUp/> {question.upvotes}</span>
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><FaThumbsDown/> {question.downvotes}</span>
-      </div>
     </div>
     <div className="font-medium self-center text-xl sm:text-2xl uppercase text-cBlue px-6 py-4">comments</div>
-    {question.quecomments.map((comment)=>{
+    {question && question.quecomments.map((comment)=>{
       return <Comment key={comment.id} comment={comment}/>
     })}
     </>
